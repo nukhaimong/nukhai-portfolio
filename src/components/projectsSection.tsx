@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Rocket, Layers } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
@@ -14,7 +14,8 @@ interface Project {
   challenge: string;
   tech: string[];
   image: string;
-  github: string;
+  github_frontend: string;
+  github_backend?: string;
   live: string;
 }
 
@@ -29,7 +30,10 @@ const projects: Project[] = [
       "Implemented an 'order_index' logic (100, 200, 300) to allow seamless insertion of modules and lectures between existing ones.",
     tech: ['Next.js', 'Prisma', 'PostgreSQL', 'Stripe', 'Better-Auth'],
     image: '/images/lms.png',
-    github: 'https://github.com/nukhaimong/learning_management_system_frontend',
+    github_frontend:
+      'https://github.com/nukhaimong/learning_management_system_frontend',
+    github_backend:
+      'https://github.com/nukhaimong/learning_mangement_system-backend-',
     live: 'https://learning-management-system-frontend-azure.vercel.app',
   },
   {
@@ -42,7 +46,8 @@ const projects: Project[] = [
       'Engineered a granular order schema that creates separate entries per food item to handle deliveries from different restaurants efficiently.',
     tech: ['Express.js', 'Node.js', 'Zustand', 'Next.js', 'Prisma'],
     image: '/images/food-delivery-app.png',
-    github: 'https://github.com/nukhaimong/food-delivery-app-frontend',
+    github_frontend: 'https://github.com/nukhaimong/food-delivery-app-frontend',
+    github_backend: 'https://github.com/nukhaimong/Food-Delivery-App-Backend',
     live: 'https://food-delivery-app-frontend-umber.vercel.app/',
   },
   {
@@ -55,7 +60,7 @@ const projects: Project[] = [
       'Focused on pixel-perfect recreation and optimized asset loading using React and Tailwind CSS.',
     tech: ['React', 'Tailwind CSS', 'Vite'],
     image: '/images/nike-landing-page.png',
-    github:
+    github_frontend:
       'https://github.com/nukhaimong/tailwind-css-project--nike-landing-page',
     live: 'https://tailwind-css-project-nike-landing-p.vercel.app',
   },
@@ -88,20 +93,37 @@ export default function ProjectsSection() {
               {/* FIXED LINKS LAYER: Always accessible above the hover detail */}
               <div className="absolute top-6 right-6 z-30 flex gap-2">
                 <motion.a
-                  href={project.github}
+                  href={project.github_frontend}
                   target="_blank"
                   className="px-4 py-2 bg-slate-800 rounded-full flex items-center gap-2 hover:bg-slate-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
-                  title="View Source on GitHub"
+                  title="View Frontend Source on GitHub"
                 >
                   <SiGithub
                     size={16}
                     className="text-slate-400 group-hover:text-white"
                   />
                   <span className="text-xs font-bold text-slate-300">
-                    View Code
+                    Frontend
                   </span>
                 </motion.a>
+                {project.github_backend && (
+                  <motion.a
+                    href={project.github_backend}
+                    target="_blank"
+                    className="px-4 py-2 bg-slate-800 rounded-full flex items-center gap-2 hover:bg-slate-700 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    title="View Backend Source on GitHub"
+                  >
+                    <SiGithub
+                      size={16}
+                      className="text-slate-400 group-hover:text-white"
+                    />
+                    <span className="text-xs font-bold text-slate-300">
+                      Backend
+                    </span>
+                  </motion.a>
+                )}
                 <motion.a
                   href={project.live}
                   target="_blank"
