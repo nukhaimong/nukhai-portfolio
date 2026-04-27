@@ -5,7 +5,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { ArrowDown, FileText } from 'lucide-react';
+import { ArrowDown, FileText, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -66,7 +66,7 @@ const Hero = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/nu-khai-mong-marma-6492b0218',
+      href: 'https://www.linkedin.com/in/nu-khai-mong-marma/',
       path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z',
     },
   ];
@@ -102,19 +102,25 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <button className="group relative flex items-center gap-3 bg-white text-slate-950 px-10 py-5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-sky-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                <FileText
-                  size={18}
-                  className="group-hover:rotate-12 transition-transform"
-                />
-                Download Resume
-              </button>
+              <motion.a
+                href="https://drive.google.com/file/d/14TT0nAjTEiJvxZn6zYdvbGou0HPLxcOV/view?usp=sharing"
+                target="_blank"
+              >
+                <button className="group relative flex items-center gap-3 bg-white text-slate-950 px-10 py-5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-sky-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                  <FileText
+                    size={18}
+                    className="group-hover:rotate-12 transition-transform"
+                  />
+                  Download Resume
+                </button>
+              </motion.a>
 
               <div className="flex gap-6">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
                     whileHover={{ y: -4, color: '#38bdf8' }}
                     className="text-slate-600 transition-colors"
                   >
@@ -141,7 +147,7 @@ const Hero = () => {
               {/* Main Image Frame */}
               <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-slate-800 shadow-[0_0_50px_rgba(0,0,0,0.5)] transform -rotate-2 hover:rotate-0 transition-all duration-1000 ease-expo">
                 <Image
-                  src="/images/nu-khai.png"
+                  src="/images/nu_khai.png"
                   alt="Nu Khai Mong Marma"
                   fill
                   className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
